@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>esfx - Framework API for ECMAScript Packages</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <meta charset="utf8" />
+        <script>
+            (function () {
+                var div = document.createElement('div'),
+                    ref = document.getElementsByTagName('script')[0];
+                div.innerHTML = '&shy;<style> iframe { visibility: hidden; } </style>';
+                ref.parentNode.insertBefore(div, ref);
+                window.addEventListener("load", function() {
+                    div.parentNode.removeChild(div);
+                });
+            })();
+        </script>
+        <script src="scripts/anchors.js"></script>
+    </head>
+    <body>
+        <header class="hero">
+            <a class="fork" href="https://github.com/esfx/esfx"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+            <img src="images/esfx-logo-200x200.png" alt="esfx logo" width="200" height="200" />
+            <p>
+                A low-level framework for interoperability between 3rd-party ECMAScript packages.
+            </p>
+            <p>
+                <iframe src="https://ghbtns.com/github-btn.html?user=esfx&repo=esfx&type=star&count=true&size=large" frameborder="0" scrolling="0" width="200px" height="30px"></iframe>
+            </p>
+        </header>
+        <nav class="hero-nav">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#license">License</a></li>
+                <li><a href="https://github.com/esfx/esfx">Source</a></li>
+            </ul>
+        </nav>
+        <article class="content">
+            <h1 id="about">About</h1>
+            <p>
+                The <code>@esfx</code> suite of packages is designed to provide low-level interoperability between 3rd-party packages for a number of common operations.
+            </p>
+            <p>
+                The suite is broken down into the following categories:
+            </p>
+            <ul>
+                <li><a href="#api-packages">Low-level API Packages</a></li>
+                <li><a href="#collections">Collection Classes</a></li>
+                <li><a href="#async">Async Coordination Primitives</a></li>
+                <li><a href="#decorators">Decorators</a></li>
+                <li><a href="#utils">Utilities</a></li>
+                <li><a href="#shims">Shims</a></li>
+                <li><a href="#adapters">Adapters</a></li>
+            </ul>
+            <h2 id="api-packages">Low-level API Packages</h2>
+            <p>
+                The primary purpose of <code>@esfx</code> is to provide a number of low-level <code>Symbol</code>-based API packages to allow interop between 3rd-party packages:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/equatable.html"><code>@esfx/equatable</code></a>
+                    - A low-level <code>Symbol</code>-based API for defining equality and comparability.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/collection_core.html"><code>@esfx/collection-core</code></a>
+                    - A low-level <code>Symbol</code>-based API for defining common collection behaviors.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/disposable.html"><code>@esfx/disposable</code></a>
+                    - A low-level <code>Symbol</code>-based API for defining explicit resource management.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/cancelable.html"><code>@esfx/cancelable</code></a>
+                    - A low-level <code>Symbol</code>-based API for defining a common cancellation protocol.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/async_lockable.html"><code>@esfx/async-lockable</code></a>
+                    - A low-level <code>Symbol</code>-based API that represents a value that can be used to synchronize access to a resource.
+                </li>
+            </ul>
+            <h2 id="collections">Collection Classes</h2>
+            <p>
+                The following packages provide reusable <em>collection</em> and <em>list</em> abstractions over the <code>@esfx/collection-core</code> and <code>@esfx/equatable</code> packages:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/collections.html"><code>@esfx/collections</code></a>
+                    - A common collections API composed of the following packages:
+                </li>
+                <ul>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/collections_hashmap.html"><code>@esfx/collections-hashmap</code></a>
+                        - A <code>Map</code> implementation that supports key-equality via the <a href="https://esfx.github.io/esfx/modules/equatable.equatable-1.html">Equatable</a> interface from <code>@esfx/equatable</code>.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/collections_hashset.html"><code>@esfx/collections-hashset</code></a>
+                        - A <code>Set</code> implementation that supports key-equality via the <a href="https://esfx.github.io/esfx/modules/equatable.equatable-1.html">Equatable</a> interface from <code>@esfx/equatable</code>.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/collections_linkedlist.html"><code>@esfx/collections-linkedlist</code></a>
+                        - A linked-list implementation.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/collections_sortedmap.html"><code>@esfx/collections-sortedmap</code></a>
+                        - A <code>Map</code> implementation that supports key-equality via the <a href="https://esfx.github.io/esfx/modules/equatable.comparable.html">Comparable</a> interface from <code>@esfx/equatable</code>.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/collections_sortedset.html"><code>@esfx/collections-sortedset</code></a>
+                        - A <code>Set</code> implementation that supports key-equality via the <a href="https://esfx.github.io/esfx/modules/equatable.comparable.html">Comparable</a> interface from <code>@esfx/equatable</code>.
+                    </li>
+                </ul>
+            </ul>
+            <h2 id="async">Async Coordination Primitives</h2>
+            <p>
+                The following packages provide primitives to help coordinate async operations:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/async.html"><code>@esfx/async</code></a>
+                    - A composite package consisting of the following component packages:
+                </li>
+                <ul>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_autoresetevent.html"><code>@esfx/async-autoresetevent</code></a>
+                        - Represents a synchronization event that, when signaled, resets automatically after releasing a single waiting asynchronous operation.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_barrier.html"><code>@esfx/async-barrier</code></a>
+                        - A class that enables multiple tasks to cooperatively work on an algorithm through multiple phases.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_canceltoken.html"><code>@esfx/async-canceltoken</code></a>
+                        - An object used to signal requests for cancellation.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_conditionvariable.html"><code>@esfx/async-conditionvariable</code></a>
+                        - An async coordination primitive that synchronizes access to a shared variable and controls notification to waiting operations.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_countdown.html"><code>@esfx/async-countdown</code></a>
+                        - An event becomes signaled when all participants have become signaled.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_deferred.html"><code>@esfx/async-deferred</code></a>
+                        - Encapsulates a <code>Promise</code> and exposes its resolve and reject callbacks.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_delay.html"><code>@esfx/async-delay</code></a>
+                        - A function that waits the specified number of milliseconds before resolving.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_lazy.html"><code>@esfx/async-lazy</code></a>
+                        - A class that provides a lazy-initialized asynchronous value.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_manualresetevent.html"><code>@esfx/async-manualresetevent</code></a>
+                        - Represents a synchronization event that, when signaled, releases all waiting asynchronous operations.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_mutex.html"><code>@esfx/async-mutex</code></a>
+                        - An async coordination primitive used to coordinate access to a protected resource.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_queue.html"><code>@esfx/async-queue</code></a>
+                        - An asynchronous FIFO queue.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_readerwriterlock.html"><code>@esfx/async-readerwriterlock</code></a>
+                        - Coordinates readers and writers for a resource.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_semaphore.html"><code>@esfx/async-semaphore</code></a>
+                        - Limits the number of asynchronous operations that can access a pool of resources.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_stack.html"><code>@esfx/async-stack</code></a>
+                        - An asynchronous LIFO stack.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/async_waitqueue.html"><code>@esfx/async-waitqueue</code></a>
+                        - An async coordination primitive that provides a queue of <code>Promise</code> objects that can be used to schedule resolution.
+                    </li>
+                </ul>
+            </ul>
+            <h2 id="decorators">Decorators</h2>
+            <p>
+                The following packages provide decorators and decorator-related functionality:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/decorators_stage1_core.html"><code>@esfx/decorators-stage1-core</code></a>
+                    - Provides a low-level API for working with ECMAScript Stage-1 decorators.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/decorators.html"><code>@esfx/decorators</code></a>
+                    - Provides a number of frequently used decorators.
+                </li>
+            </ul>
+            <h2 id="utils">Utilities</h2>
+            <p>
+                The following packages provide various utilities:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/events.html"><code>@esfx/events</code></a>
+                    - A low-level API for defining events.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/indexed_object.html"><code>@esfx/indexed-object</code></a>
+                    - A base class for custom integer-indexed objects.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/lazy.html"><code>@esfx/lazy</code></a>
+                    - Provides a class to simplify lazy-initialization logic.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/metadata.html"><code>@esfx/metadata</code></a>
+                    - An API for defining metadata about an object.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/ref.html"><code>@esfx/ref</code></a>
+                    - A low-level API for defining forward references.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/type_model.html"><code>@esfx/type-model</code></a>
+                    - A number of useful types for TypeScript.
+                </li>
+            </ul>
+            <h2 id="shims">Shims</h2>
+            <p>
+                Shim packages augment built-in objects with functionality from the main packages.
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/cancelable_dom_shim.html"><code>@esfx/cancelable-dom-shim</code></a>
+                    - A shim that adds the <code>@esfx/cancelable</code> API to the DOM <code>AbortSignal</code> and <code>AbortController</code>.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/collection_core_shim.html"><code>@esfx/collection-core-shim</code></a>
+                    - A shim that adds the <code>@esfx/collection-core</code> API to ECMAScript native global objects.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/collection_core_dom-shim.html"><code>@esfx/collection-core-dom-shim</code></a>
+                    - A shim that adds the <code>@esfx/collection-core</code> API to DOM global objects.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/equatable_shim.html"><code>@esfx/equatable-shim</code></a>
+                    - A shim that adds the <code>@esfx/equatable</code> API to ECMAScript native global objects.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/metadata_shim.html"><code>@esfx/metadata-shim</code></a>
+                    - A shim that adds minimal <code>@esfx/metadata</code> functionality to the ECMAScript <code>Reflect</code> global object for use with TypeScript's <code>-emitDecoratorMetadata</code> option.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/reflect_metadata_compat.html"><code>@esfx/reflect-metadata-compat</code></a>
+                    - A <a href="https://github.com/rbuckton/reflect-metadata"><code>reflect-metadata</code></a>-compatible shim for the <code>@esfx/metadata</code> package.
+                </li>
+            </ul>
+            <h2 id="adapters">Adapters</h2>
+            <p>
+                Adapter packages provide functionality to simplify interoperability scenarios with different platforms:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/cancelable_dom.html"><code>@esfx/cancelable-dom</code></a>
+                    - Provides an adapter function to convert a <a href="https://esfx.github.io/esfx/modules/cancelable.cancelable-1.html"><code>Cancelable</code></a> into a DOM <code>AbortSignal</code>.
+                </li>
+            </ul>
+            <h1 id="documentation">Documentation</h1>
+            <p>
+                You can read more about the API <a href="https://esfx.github.io/esfx">here</a>.
+            </p>
+            <h1 id="license">License</h1>
+            <p>
+                <code>esfx</code> is distributed as open source under the <a href="https://github.com/esfx/esfx/blob/master/LICENSE">Apache License 2.0</a>. 
+            </p>
+        </article>
+    </body>
+</html>
