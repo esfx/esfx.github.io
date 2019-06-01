@@ -31,7 +31,7 @@
         <nav class="hero-nav">
             <ul>
                 <li><a href="#about">About</a></li>
-                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="https://esfx.js.org/esfx">Documentation</a></li>
                 <li><a href="#license">License</a></li>
                 <li><a href="https://github.com/esfx/esfx">Source</a></li>
             </ul>
@@ -48,6 +48,7 @@
                 <li><a href="#api-packages">Low-level API Packages</a></li>
                 <li><a href="#collections">Collection Classes</a></li>
                 <li><a href="#async">Async Coordination Primitives</a></li>
+                <li><a href="#threading">Thread Synchronization Primitives</a></li>
                 <li><a href="#decorators">Decorators</a></li>
                 <li><a href="#utils">Utilities</a></li>
                 <li><a href="#shims">Shims</a></li>
@@ -76,7 +77,11 @@
                 </li>
                 <li>
                     <a href="https://esfx.github.io/esfx/modules/async_lockable.html"><code>@esfx/async-lockable</code></a>
-                    - A low-level <code>Symbol</code>-based API that represents a value that can be used to synchronize access to a resource.
+                    - A low-level <code>Symbol</code>-based API that represents a value that can be used to coordinate access to a resource asynchronously.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/threading_lockable.html"><code>@esfx/threading-lockable</code></a>
+                    - A low-level <code>Symbol</code>-based API that represents a value that can be used to synchronize access to a resource synchronously.
                 </li>
             </ul>
             <h2 id="collections">Collection Classes</h2>
@@ -183,6 +188,50 @@
                     </li>
                 </ul>
             </ul>
+            <h2 id="threading">Thread Synchronization Primitives</h2>
+            <p>
+                The following packages provide primitives to help synchronize and coordinate multiple threads using Workers:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/threading.html"><code>@esfx/threading</code></a>
+                    - A composite package consisting of the following component packages:
+                </li>
+                <ul>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_autoresetevent.html"><code>@esfx/threading-autoresetevent</code></a>
+                        - Represents a synchronization event that, when signaled, resets automatically after releasing a single waiting thread.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_conditionvariable.html"><code>@esfx/threading-conditionvariable</code></a>
+                        - A thread synchronization primitive that synchronizes access to a shared variable and controls notification to waiting operations.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_countdown.html"><code>@esfx/threading-countdown</code></a>
+                        - An event becomes signaled when all participants have become signaled.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_manualresetevent.html"><code>@esfx/threading-manualresetevent</code></a>
+                        - Represents a synchronization event that, when signaled, releases all waiting threads.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_mutex.html"><code>@esfx/threading-mutex</code></a>
+                        - A thread synchronization primitive used to synchronize access to a protected resource.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_semaphore.html"><code>@esfx/threading-semaphore</code></a>
+                        - Limits the number of threads that can access a pool of resources.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_sleep.html"><code>@esfx/threading-sleep</code></a>
+                        - A function that blocks the current thread for the specified number of milliseconds.
+                    </li>
+                    <li>
+                        <a href="https://esfx.github.io/esfx/modules/threading_spinwait.html"><code>@esfx/threading-spinwait</code></a>
+                        - Provides support for spin-based waiting.
+                    </li>
+                </ul>
+            </ul>
             <h2 id="decorators">Decorators</h2>
             <p>
                 The following packages provide decorators and decorator-related functionality:
@@ -221,6 +270,10 @@
                 <li>
                     <a href="https://esfx.github.io/esfx/modules/ref.html"><code>@esfx/ref</code></a>
                     - A low-level API for defining forward references.
+                </li>
+                <li>
+                    <a href="https://esfx.github.io/esfx/modules/struct_type.html"><code>@esfx/struct-type</code></a>
+                    - Defines structured types backed by `ArrayBuffer` or `SharedArrayBuffer` instances that can be easily serialized or shared across Workers.
                 </li>
                 <li>
                     <a href="https://esfx.github.io/esfx/modules/type_model.html"><code>@esfx/type-model</code></a>
@@ -267,10 +320,6 @@
                     - Provides an adapter function to convert a <a href="https://esfx.github.io/esfx/modules/cancelable.cancelable-1.html"><code>Cancelable</code></a> into a DOM <code>AbortSignal</code>.
                 </li>
             </ul>
-            <h1 id="documentation">Documentation</h1>
-            <p>
-                You can read more about the API <a href="https://esfx.github.io/esfx">here</a>.
-            </p>
             <h1 id="license">License</h1>
             <p>
                 <code>esfx</code> is distributed as open source under the <a href="https://github.com/esfx/esfx/blob/master/LICENSE">Apache License 2.0</a>. 
